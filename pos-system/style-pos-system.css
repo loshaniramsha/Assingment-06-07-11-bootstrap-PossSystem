@@ -15,7 +15,13 @@
 .text-customer{
     color: #f1ecec;
     font-size: 40px;
-}/*
+}
+.modal-header{
+    background-color: #1b521a;
+    color: white;
+}
+
+/*
 .table {
     width: 100%; !* Set the width of the table to 100% of its container *!
     border-collapse: collapse; !* Collapse borders between table cells *!
