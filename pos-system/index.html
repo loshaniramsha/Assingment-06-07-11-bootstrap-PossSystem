@@ -526,18 +526,26 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <script>
+
+    $('#customer').css({display:'none'});
+    $('#order').css({display:'none'});
+    $('#item').css({display:'none'});
+
+    /*customer section*/
   $('#nav-customer').on('click',()=>{
       $('#customer').css({display:'block'});
       $('#order').css({display:'none'});
       $('#item').css({display:'none'});
   })
 
+    /*order section*/
   $('#nav-order').on('click',()=>{
       $('#customer').css({display:'none'});
       $('#order').css({display:'block'});
       $('#item').css({display:'none'});
   })
 
+    /*item section*/
   $('#nav-item').on('click',()=>{
       $('#customer').css({display:'none'});
       $('#order').css({display:'none'});
