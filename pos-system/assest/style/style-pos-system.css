@@ -20,6 +20,10 @@
     background-color: #1b521a;
     color: white;
 }
+#order-text{
+    color: #f1ecec;
+    text-align: center;
+}
 
 /*
 .table {
