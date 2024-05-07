@@ -180,9 +180,9 @@
                                 <div class="form-check">
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-danger">Delete</button>
-                            <button type="button" class="btn btn-primary">Details</button>
-                            <button type="button" class="btn btn-success">Close</button>
+                            <button type="button" class="btn btn-danger" id="item-delete">Delete</button>
+                            <button type="button" class="btn btn-primary" id="item-details">Details</button>
+                            <button type="button" class="btn btn-success" id="item-close">Close</button>
                             <br><br><br>
                             <table class="table">
                                 <thead>
@@ -193,7 +193,7 @@
                                     <th scope="col">Item qty</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="item-tbl-body">
 
                                 </tbody>
                             </table>
@@ -236,9 +236,9 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                                <button class="btn btn-danger" type="button">Save</button>
-                                                <button class="btn btn-warning" type="button">Revew</button>
-                                                <button class="btn btn-info" type="button">Close</button>
+                                                <button class="btn btn-danger" type="button" id="item-save">Save</button>
+                                                <button class="btn btn-warning" type="button" id="item-renew">Revew</button>
+                                                <button class="btn btn-info" type="button" id="item-close-mod">Close</button>
                                             </div>
                                         </div>
                                     </div>
@@ -443,6 +443,7 @@
 <script src="assest/lib/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="js/customer.js"></script>
+<script src="js/item.js"></script>
 <script>
 
     $('#customer').css({display:'none'});
