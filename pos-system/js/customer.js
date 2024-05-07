@@ -103,3 +103,23 @@ $("#customer-tbl-body").on('click', 'tr', function () {
     $("#customer_address").val(address);
     $("#customer_salary").val(salary);
 });
+
+/*
+$("#delete-customer").on('click',()=>{
+    customer.splice(recordIndex,1);
+    alert("delet customer")
+    loadTable();
+});*/
+$("#delete-customer").on('click', () => {
+    const confirmation = confirm("Are you sure you want to delete this customer?");
+    if (confirmation) {
+
+        customer.splice(recordIndex, 1);
+        alert("Customer deleted successfully.");
+        loadTable();
+    } else {
+
+        alert("Deletion canceled.");
+    }
+});
+$("#close-customer")
