@@ -12,6 +12,7 @@ $('#save-customer').on('click', () => {
     var customerAddress = $('#customer_address').val();
     var customerSalary = $('#customer_salary').val();
 
+    $('#close-customer-model').click();
 
     var newCustomer = {
         id: customerId,
@@ -75,8 +76,8 @@ $("#delete-customer").on('click', () => {
         alert("Deletion canceled.");
     }
 });
-$("#close-customer")
-/*$('#update-customer').on('click', () => {
+
+$('#update-customer').on('click', () => {
     // Get the updated values from the input fields
     var updatedId = $('#customer_id').val();
     var updatedName = $('#customer_name').val();
@@ -97,6 +98,97 @@ $("#close-customer")
 
     // Reload the table to reflect the changes
     loadTable();
-});*/
+});
+
+$('#revew-customer').on('click', () => {
+    // Get the entered customer ID
+    var customerId = $('#customer_id').val();
+
+    // Find the index of the customer in the array based on the entered ID
+    var customerIndex = customer.findIndex(c => c.id === customerId);
+
+    // Check if the customer with the entered ID exists
+    if (customerIndex !== -1) {
+        // Retrieve the customer details from the array
+        var selectedCustomer = customer[customerIndex];
+
+        // Fill the input fields with the retrieved customer details
+        $("#customer_name").val(selectedCustomer.name);
+        $("#customer_address").val(selectedCustomer.address);
+        $("#customer_salary").val(selectedCustomer.salary);
+
+        console.log("Customer details filled successfully.");
+    } else {
+        alert("Customer with the entered ID does not exist.");
+    }
+});
+
+$('#close-customer-model').on('click', () => {
+    // Clear the input fields
+    $('#customer_id').val('');
+    $('#customer_name').val('');
+    $('#customer_address').val('');
+    $('#customer_salary').val('');
+});
+
+$('#exite-customer-model').on('click', () => {
+    $('#staticBackdrop-customer').modal('hide');
+});
+
+/*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+// Function to open the modal and fill the input fields with customer data for update
+$("#Update-customer").on("click", () => {
+    // Get the selected customer's data
+    let id = $("#customer_id").val();
+    let name = $("#customer_name").val();
+    let address = $("#customer_address").val();
+    let salary = $("#customer_salary").val();
+
+    // Check if a customer is selected
+    if (id) {
+        // Fill the modal input fields with the selected customer's data
+        $("#staticBackdrop-customer").modal("show");
+        $("#customer_id").val(id);
+        $("#customer_name").val(name);
+        $("#customer_address").val(address);
+        $("#customer_salary").val(salary);
+    } else {
+        alert("Please select a customer from the table.");
+    }
+});
+
+// Function to update the customer's data when the "Update" button inside the modal is clicked
+$("#update-customer-model").on("click", () => {
+    // Get the updated values from the modal input fields
+    var updatedId = $("#customer_id").val();
+    var updatedName = $("#customer_name").val();
+    var updatedAddress = $("#customer_address").val();
+    var updatedSalary = $("#customer_salary").val();
+
+    // Find the index of the customer in the array based on the customer ID
+    var customerIndex = customer.findIndex((c) => c.id === updatedId);
+
+    // Check if the customer with the entered ID exists
+    if (customerIndex !== -1) {
+        // Update the corresponding customer object in the customer array
+        customer[customerIndex].name = updatedName;
+        customer[customerIndex].address = updatedAddress;
+        customer[customerIndex].salary = updatedSalary;
 
 
+
+        // Log the updated values for verification
+        console.log("Updated Customer ID:", updatedId);
+        console.log("Updated Customer Name:", updatedName);
+        console.log("Updated Customer Address:", updatedAddress);
+        console.log("Updated Customer Salary:", updatedSalary);
+
+        // Reload the table to reflect the changes
+        loadTable();
+
+        // Close the modal
+        $("#staticBackdrop-customer").modal("hide");
+    } else {
+        alert("Customer with the entered ID does not exist.");
+    }
+});
