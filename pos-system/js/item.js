@@ -27,10 +27,11 @@ $("#item-save").on('click', () => {
     console.log("Price:", itemPrice);
     console.log("Qty:", itemQty);
 
-    loadTable(items);
+    loadItemTable(items)
+    /*loadTable(items);*/
 });
 
-function loadTable(items) {
+function loadItemTable(items) {
     $("#item-tbl-body").empty();
 
     items.forEach((item, index) => {

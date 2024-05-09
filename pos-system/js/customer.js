@@ -62,12 +62,7 @@ $("#customer-tbl-body").on('click', 'tr', function () {
     $("#customer_salary").val(salary);
 });
 
-/*
-$("#delete-customer").on('click',()=>{
-    customer.splice(recordIndex,1);
-    alert("delet customer")
-    loadTable();
-});*/
+
 $("#delete-customer").on('click', () => {
     const confirmation = confirm("Are you sure you want to delete this customer?");
     if (confirmation) {
@@ -81,3 +76,27 @@ $("#delete-customer").on('click', () => {
     }
 });
 $("#close-customer")
+/*$('#update-customer').on('click', () => {
+    // Get the updated values from the input fields
+    var updatedId = $('#customer_id').val();
+    var updatedName = $('#customer_name').val();
+    var updatedAddress = $('#customer_address').val();
+    var updatedSalary = $('#customer_salary').val();
+
+    // Update the corresponding customer object in the customer array
+    customer[recordIndex].id = updatedId;
+    customer[recordIndex].name = updatedName;
+    customer[recordIndex].address = updatedAddress;
+    customer[recordIndex].salary = updatedSalary;
+
+    // Log the updated values for verification
+    console.log("Updated Customer ID:", updatedId);
+    console.log("Updated Customer Name:", updatedName);
+    console.log("Updated Customer Address:", updatedAddress);
+    console.log("Updated Customer Salary:", updatedSalary);
+
+    // Reload the table to reflect the changes
+    loadTable();
+});*/
+
+
