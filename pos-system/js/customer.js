@@ -135,7 +135,7 @@ $('#exite-customer-model').on('click', () => {
     $('#staticBackdrop-customer').modal('hide');
 });
 
-/*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$*/
+
 // Function to open the modal and fill the input fields with customer data for update
 $("#Update-customer").on("click", () => {
     // Get the selected customer's data
@@ -192,3 +192,5 @@ $("#update-customer-model").on("click", () => {
         alert("Customer with the entered ID does not exist.");
     }
 });
+
+
