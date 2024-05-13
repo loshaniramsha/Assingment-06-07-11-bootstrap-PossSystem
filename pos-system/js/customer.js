@@ -32,6 +32,7 @@ $('#save-customer').on('click', () => {
 
 
     loadTable();
+    loadComboBoxes(customer,"inputGroupSelect-customer")
 });
 
 function loadTable() {
@@ -193,4 +194,23 @@ $("#update-customer-model").on("click", () => {
     }
 });
 
+
+function loadComboBoxes(array, comboBoxId) {
+    console.log("combo-box loaded", array, comboBoxId);
+    var comboBox = $('#' + comboBoxId); // Get the combo box by ID
+
+    // Clear existing options
+    comboBox.empty();
+
+    // Iterate through the array and add options
+    array.forEach(function(customer) {
+        comboBox.append($('<option>', {
+            value: customer.id,
+            text: customer.id
+        }));
+    });
+}
+
+// Call the loadComboBox function to populate the customer ID dropdown
+loadComboBoxes(customer, 'inputGroupSelect-customer');
 
