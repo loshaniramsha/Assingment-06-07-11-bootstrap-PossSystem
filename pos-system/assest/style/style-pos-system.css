@@ -27,6 +27,55 @@
 .table{
     margin-left: 6rem;
 }
+/*
+
+@media only screen and (max-width: 768px) {
+    !* Navbar *!
+    .navbar {
+        flex-direction: column;
+    }
+
+    .navbar-toggler {
+        order: 1;
+    }
+
+    .navbar-collapse {
+        order: 2;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 0.5rem 1rem;
+    }
+
+    !* Sections *!
+    #customer, #order, #item {
+        width: 100%;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .modal-dialog {
+        max-width: 100%;
+        margin: 1.75rem auto;
+    }
+
+    .modal-content {
+        width: 100%;
+    }
+
+    .modal-body, .modal-footer {
+        padding: 1rem;
+    }
+}
+
+*/
 
 /*
 .table {
