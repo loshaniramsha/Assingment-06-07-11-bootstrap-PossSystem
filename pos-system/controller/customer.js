@@ -1,6 +1,6 @@
 
 /*var customer = [];*/
-import {customer} from "../db/db.js";
+import {customer} from "../db/db.js"
 var recordIndex;
 
 $('#save-customer').on('click', () => {
