@@ -1,5 +1,6 @@
 
-var items = [];
+/*var items = [];*/
+import {items} from "../db/db.js";
 var recordIndex;
 
 $("#item-save").on('click', () => {
@@ -30,6 +31,7 @@ $("#item-save").on('click', () => {
     console.log("Qty:", itemQty);
 
     loadItemTable(items)
+    loadComboBox(items,'inputGroupSelect-item');
     /*loadTable(items);*/
 });
 
@@ -165,3 +167,18 @@ $("#update-item-model").on("click", () => {
     }
 });
 
+function loadComboBox(arrai,comboId) {
+    console.log("combo-box loaded", arrai, comboId);
+    var comboBox = $('#' + comboId); // Get the combo box by ID
+    // Clear existing options
+    comboBox.empty();
+    // Iterate through the array and add options
+    arrai.forEach(function(item) {
+        comboBox.append($('<option>', {
+            value: item.code,
+            text: item.code
+        }));
+    });
+
+}
+loadComboBox(items,'inputGroupSelect-item');
