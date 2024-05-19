@@ -324,7 +324,7 @@
                                             <input type="text" class="form-control" id="customer-name-orderForm" placeholder="Name" aria-label="First name">
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" id="customer-salary-orderForm" placeholder="Salary" aria-label="Last name">
+                                            <input type="text" class="form-control" id="customer-salary-orderForm" placeholder="Contact" aria-label="Last name">
                                         </div>
                                     </div>
                                     <br>
@@ -438,8 +438,8 @@
 
 <script src="assest/lib/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="js/customer.js"></script>
-<script src="js/item.js"></script>
+<script src="controller/customer.js"></script>
+<script src="controller/item.js"></script>
 <script>
 
     $('#customer').css({display:'none'});
@@ -466,64 +466,6 @@
       $('#order').css({display:'none'});
       $('#item').css({display:'block'});
   })
-
-
-/*$('#save-customer').on('click',()=>{
-    alert("save customer")
- var customerId= $('#customer_id').val();
-  var customerName=  $('#customer_name').val();
-  var customerAddress=  $('#customer_address').val();
-   var customerSalary= $('#customer_salary').val()
-
-    console.log(customerId,customerName,customerAddress,customerSalary);
-})*/
-
 </script>
 </body>
 </html>
-
-
-
-
-<!--        <tr>
-                                <th scope="row">1</th>
-                                <td>Loshani</td>
-                                <td>Horana</td>
-                                <td>200000</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Mandakini</td>
-                                <td>Bentara</td>
-                                <td>250000</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Erandi</td>
-                                <td>Panadura</td>
-                                <td>300000</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>-->
