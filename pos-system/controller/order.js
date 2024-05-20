@@ -81,6 +81,24 @@ export function loadComboItem(array, comboBoxId) {
             text: item.itemCode
         }));
     });
-
 }
 
+$('#inputState-item').on('change', () => {
+    var selectedCode = $('#inputState-item').val();
+    var selectedItem = items.find(i => i.itemCode == selectedCode);
+
+    if (selectedItem) {
+        $('#inputPassword4').val(selectedItem.itemCode);
+        $('#item-name-orderForm').val(selectedItem.name);
+        $('#item-price-orderForm').val(selectedItem.price);
+        $('#qtyHand').val(selectedItem.qty);
+    } else {
+        $('#inputPassword4').val('');
+        $('#item-name-orderForm').val('');
+        $('#item-price-orderForm').val('');
+        $('#qtyHand').val('');
+    }
+});
+
+// Call the loadComboItem function to populate the item code dropdown
+loadComboItem(items, 'inputState-item');
