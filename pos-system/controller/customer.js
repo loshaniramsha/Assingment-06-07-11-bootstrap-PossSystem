@@ -1,10 +1,9 @@
 import CustomerModel from "../model/CustomerModel.js";
 import {loadCombos} from "./order.js";
-/*var customer = [];*/
 import {customer} from "../db/db.js"
 var recordIndex;
 
-
+/*auto generate customer id*/
 $('#customer_id').val(nextId());
 
 function nextId() {
@@ -14,10 +13,11 @@ function nextId() {
         return 1;
     }
 }
+
+/*customer save*/
 $('#save-customer').on('click', () => {
 
     alert("Saving customer...");
-
 
     var customerId = $('#customer_id').val();
     var customerName = $('#customer_name').val();
@@ -43,7 +43,7 @@ $('#save-customer').on('click', () => {
     $('#customer_id').val(nextId());
 
 });
-
+/*search input-customer*/
 var selectedCustomer = $('#inputGroupSelect-customer').val();
 
 $('#inputGroupSelect-customer').on('input', () => {
@@ -66,6 +66,7 @@ $('#inputGroupSelect-customer').on('input', () => {
     }
 });
 
+/*loard table*/
 function loadTable() {
     $('#customer-tbl-body').empty();
     customer.map((item, index) => {
@@ -95,7 +96,7 @@ $("#customer-tbl-body").on('click', 'tr', function () {
     $("#customer_salary").val(salary);
 });
 
-
+/*delete */
 $("#delete-customer").on('click', () => {
     const confirmation = confirm("Are you sure you want to delete this customer?");
     if (confirmation) {
@@ -109,39 +110,15 @@ $("#delete-customer").on('click', () => {
     }
 });
 
-/*$('#update-customer').on('click', () => {
-    // Get the updated values from the input fields
-    var updatedId = $('#customer_id').val();
-    var updatedName = $('#customer_name').val();
-    var updatedAddress = $('#customer_address').val();
-    var updatedSalary = $('#customer_salary').val();
-
-    // Update the corresponding customer object in the customer array
-    customer[recordIndex].id = updatedId;
-    customer[recordIndex].name = updatedName;
-    customer[recordIndex].address = updatedAddress;
-    customer[recordIndex].salary = updatedSalary;
-
-    // Log the updated values for verification
-    console.log("Updated Customer ID:", updatedId);
-    console.log("Updated Customer Name:", updatedName);
-    console.log("Updated Customer Address:", updatedAddress);
-    console.log("Updated Customer Salary:", updatedSalary);
-
-    // Reload the table to reflect the changes
-    loadTable();
-});*/
-
+/*revew customer*/
 $('#revew-customer').on('click', () => {
-    // Get the entered customer ID
+
     var customerId = $('#customer_id').val();
 
-    // Find the index of the customer in the array based on the entered ID
     var customerIndex = customer.findIndex(c => c.id === customerId);
 
-    // Check if the customer with the entered ID exists
+
     if (customerIndex !== -1) {
-        // Retrieve the customer details from the array
         var selectedCustomer = customer[customerIndex];
 
         // Fill the input fields with the retrieved customer details
@@ -263,6 +240,28 @@ $('#all-customer').on('click', () => {
     });
     loadTable();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
