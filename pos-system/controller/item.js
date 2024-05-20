@@ -1,6 +1,6 @@
-
 import ItemModel from "../model/ItemModel.js"; // Import the ItemModel class
 import {customer, items} from "../db/db.js"; // Import the items array
+
 
 let recordIndex;
 
@@ -37,9 +37,10 @@ $("#item-save").on('click', () => {
     loadItemTable(items);
     loadComboBox(items, 'inputGroupSelect-item');
     $("#itemCode").val(nextId());
+
 });
 
-var selectedItem = $('#inputGroupSelect-item').val();
+/*var selectedItem = $('#inputGroupSelect-item').val();
 
 $('#inputGroupSelect-item').on('input', () => {
     if ($('#inputGroupSelect-item').val() !== 'select the item'){
@@ -59,13 +60,32 @@ $('#inputGroupSelect-item').on('input', () => {
     }else{
         loadItemTable()
     }
+});*/
+$("#inputGroupSelect-item").on('change', () => {
+    const selectedItemCode = $('#inputGroupSelect-item').val();
+
+    if (selectedItemCode !== 'select the item') {
+        const selectedItem = items.find(item => item.itemCode === selectedItemCode);
+        if (selectedItem) {
+            $("#item-tbl-body").empty();
+
+            const record = `<tr>
+                <td class="item-code-value">${selectedItem.itemCode}</td>
+                <td class="item-name-value">${selectedItem.name}</td>
+                <td class="item-price-value">${selectedItem.price}</td>
+                <td class="item-qty-value">${selectedItem.qty}</td>
+            </tr>`;
+            $("#item-tbl-body").append(record);
+        }
+    } else {
+        loadItemTable(items);
+    }
 });
 
 function loadItemTable(items) {
     $("#item-tbl-body").empty();
 
-   /* items.forEach((item, index) => {*/
-    items.map((item, index) => {
+    items.forEach((item, index) => {
         const record = `<tr>
             <td class="item-code-value">${item.itemCode}</td>
             <td class="item-name-value">${item.name}</td>
@@ -188,17 +208,7 @@ loadComboBox(items, 'inputGroupSelect-item');
 
 
 $('#all-item').on('click', () => {
-    $('#item-tbl-body').empty();
-    customer.map((item, index) => {
-        let record = `<tr>
-            <td class="item-code-value">${item.itemCode}</td>
-            <td class="item-name-value">${item.name}</td>
-            <td class="item-price-value">${item.price}</td>
-            <td class="item-qty-value">${item.qty}</td>
-        </tr>`;
-        $("#item-tbl-body").append(record);
-    });
-   loadItemTable();
+    loadItemTable(items);
 });
 
 
