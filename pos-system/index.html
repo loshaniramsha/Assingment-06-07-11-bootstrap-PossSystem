@@ -291,21 +291,23 @@
                             <form>
                                 <fieldset>
                                     <legend id="invoice"><b>Invoice Details</b></legend>
-                                   <br><br>
                                     <div class="row">
                                         <div class="col">
+                                            <label for="order-id" class="form-label"><b>OrderId</b></label>
                                             <input type="text" class="form-control" id="order-id" placeholder="Order-id" aria-label="Order Id">
                                         </div>
                                         <div class="col">
+                                            <label for="order-date" class="form-label"><b>Date</b></label>
                                             <input type="date" class="form-control" id="order-date" placeholder="" aria-label="Date">
                                         </div>
                                     </div>
                                     <br>
                                     <div class="row">
                                         <div class="col-12">
-                                            <label class="visually-hidden" for="customer-id-order">Preference</label>
+                                            <!--<label class="visually-hidden" for="customer-id-order">CustomerId</label>-->
+                                            <label for="customer-id-order" class="form-label"><b>CustomerId</b></label>
                                             <select class="form-select" id="customer-id-order">
-                                                <option selected>Customer Id...</option>
+                                                <option selected>customer-id</option>
                                                 <option value="1"></option>
                                                 <option value="2"></option>
                                                 <option value="3"></option>
@@ -315,15 +317,18 @@
                                     <br>
                                     <div class="row">
                                         <div class="col">
+                                            <label for="customer-name-orderForm" class="form-label"><b>Name</b></label>
                                             <input type="text" class="form-control" id="customer-name-orderForm" placeholder="Name" aria-label="First name">
                                         </div>
                                         <div class="col">
+                                            <label for="customer-salary-orderForm" class="form-label"><b>Contact</b></label>
                                             <input type="text" class="form-control" id="customer-salary-orderForm" placeholder="Contact" aria-label="Last name">
                                         </div>
                                     </div>
-                                    <br>
+
                                     <div class="mb-3">
-                                        <label for="customer_address-orderForm" class="form-label"></label>
+                                        <!--<label for="customer_address-orderForm" class="form-label"></label>-->
+                                        <label for="customer_address-orderForm" class="form-label"><b>Address</b></label>
                                         <input type="text" class="form-control" id="customer_address-orderForm" placeholder="Address">
                                     </div>
                                     <br>
@@ -340,33 +345,33 @@
                             <form class="row g-3">
                                 <h3>Item Selection</h3>
                                 <div class="col-md-4">
-                                    <label for="inputState-item" class="form-label">Item</label>
+                                    <label for="inputState-item" class="form-label"><b>Item</b></label>
                                     <select id="inputState-item" class="form-select">
-                                        <option selected>Choose...</option>
+                                        <option selected>item-code</option>
                                         <option>...</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label" id="item-code-orderForm">Item Code</label>
+                                    <label for="inputPassword4" class="form-label" id="item-code-orderForm"><b>Item Code</b></label>
                                     <input type="text" class="form-control" id="inputPassword4">
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="item-name-orderForm" class="form-label">Item Name</label>
+                                    <label for="item-name-orderForm" class="form-label"><b>Item Name</b></label>
                                     <input type="text" class="form-control" id="item-name-orderForm">
                                 </div>
                                 <div class="col-md-4">
                                     <div class="col-md-2">
-                                        <label for="item-price-orderForm" class="form-label">Price</label>
+                                        <label for="item-price-orderForm" class="form-label"><b>Price</b></label>
                                         <input type="text" class="form-control" id="item-price-orderForm">
                                     </div>
                                 </div>
                                 <div class="col-md-2">
-                                    <label for="qtyHand" class="form-label">QtyHand</label>
+                                    <label for="qtyHand" class="form-label"><b>QtyHand</b></label>
                                     <input type="text" class="form-control" id="qtyHand">
                                 </div>
                                 <div class="col-12">
-                                    <label for="order-qty" class="form-label">Order Qty</label>
+                                    <label for="order-qty" class="form-label"><b>Order Qty</b></label>
                                     <input type="text" class="form-control" id="order-qty" placeholder="">
                                 </div>
                                 <div class="col-12">
