@@ -37,27 +37,50 @@ export function loadCombos(array, comboBoxId) {
     });
 }
 
-// Fill customer details based on selected customer ID
-function fillCustomerDetails() {
-    const selectedCustomerId = $('#customer-id-order').val();
-
-    // Find the selected customer in the customer array
-    const selectedCustomer = customer.find(c => c.id === selectedCustomerId);
+$('#customer-id-order').on('change', () => {
+    var selectedId = $('#customer-id-order').val();
+    var selectedCustomer = customer.find(c => c.id == selectedId);
 
     if (selectedCustomer) {
-        // Fill the input fields with the selected customer's details
-        $('#customerId-order-form').val(selectedCustomer.id);
         $('#customer-name-orderForm').val(selectedCustomer.name);
-        $('#customer-salary-orderForm').val(selectedCustomer.salary);
         $('#customer_address-orderForm').val(selectedCustomer.address);
+        $('#customer-salary-orderForm').val(selectedCustomer.salary);
     } else {
-        // Clear the input fields if no customer is found
-        $('#customerId-order-form').val('');
         $('#customer-name-orderForm').val('');
-        $('#customer-salary-orderForm').val('');
         $('#customer_address-orderForm').val('');
+        $('#customer-salary-orderForm').val('');
     }
-}
+});
 
-// Initial call to loadComboBoxes with customer array and combo box ID
+// Call the loadComboBoxes function to populate the customer ID dropdown
+loadCombos(customer, 'inputGroupSelect-customer');
+loadCombos(customer, 'customer-id-order');
+
+
+
+
+
+
+export function loadComboItem(array, comboBoxId) {
+    console.log("combo-box loaded", array, comboBoxId);
+    var comboBox = $('#' + comboBoxId);
+
+    // Clear existing options
+    comboBox.empty();
+
+    // Add a default option
+    comboBox.append($('<option>', {
+        value: '',
+        text: 'Select Item Code...'
+    }));
+
+    // Iterate through the array and add options
+    array.forEach(function (item) {
+        comboBox.append($('<option>', {
+            value: item.itemCode,
+            text: item.itemCode
+        }));
+    });
+
+}
 
