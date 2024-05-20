@@ -1,5 +1,6 @@
 // Auto-generate order ID
 import {customer} from "../db/db.js";
+import {items} from "../db/db.js";
 
 function generateOrderId() {
     const orderIdInput = $('#order-id');
