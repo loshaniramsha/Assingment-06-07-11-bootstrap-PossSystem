@@ -27,6 +27,11 @@
 .table{
     margin-left: 6rem;
 }
+
+#invoice{
+    color: black;
+
+}
 /*
 
 @media only screen and (max-width: 768px) {
