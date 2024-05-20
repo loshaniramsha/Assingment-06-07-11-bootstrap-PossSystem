@@ -1,6 +1,6 @@
 import ItemModel from "../model/ItemModel.js"; // Import the ItemModel class
 import {customer, items} from "../db/db.js"; // Import the items array
-
+import {loadComboItem} from "./order.js";
 
 let recordIndex;
 
@@ -37,30 +37,10 @@ $("#item-save").on('click', () => {
     loadItemTable(items);
     loadComboBox(items, 'inputGroupSelect-item');
     $("#itemCode").val(nextId());
+    loadComboItem(items, 'inputState-item');
 
 });
 
-/*var selectedItem = $('#inputGroupSelect-item').val();
-
-$('#inputGroupSelect-item').on('input', () => {
-    if ($('#inputGroupSelect-item').val() !== 'select the item'){
-        $('#item-tbl-body').empty();
-
-        customer.map((item, index) => {
-            if(item.id == $('#inputGroupSelect-item').val()){
-                const record = `<tr>
-            <td class="item-code-value">${item.itemCode}</td>
-            <td class="item-name-value">${item.name}</td>
-            <td class="item-price-value">${item.price}</td>
-            <td class="item-qty-value">${item.qty}</td>
-        </tr>`;
-                $("#item-tbl-body").append(record);
-            }
-        });
-    }else{
-        loadItemTable()
-    }
-});*/
 $("#inputGroupSelect-item").on('change', () => {
     const selectedItemCode = $('#inputGroupSelect-item').val();
 
