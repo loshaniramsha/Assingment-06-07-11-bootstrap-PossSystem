@@ -109,7 +109,7 @@ $("#delete-customer").on('click', () => {
     }
 });
 
-$('#update-customer').on('click', () => {
+/*$('#update-customer').on('click', () => {
     // Get the updated values from the input fields
     var updatedId = $('#customer_id').val();
     var updatedName = $('#customer_name').val();
@@ -130,7 +130,7 @@ $('#update-customer').on('click', () => {
 
     // Reload the table to reflect the changes
     loadTable();
-});
+});*/
 
 $('#revew-customer').on('click', () => {
     // Get the entered customer ID
@@ -249,6 +249,24 @@ function loadComboBoxes(array, comboBoxId) {
 
 // Call the loadComboBox function to populate the customer ID dropdown
 loadComboBoxes(customer, 'inputGroupSelect-customer');
+
+$('#all-customer').on('click', () => {
+    $('#customer-tbl-body').empty();
+    customer.map((item, index) => {
+        let record = `<tr>
+                        <td class="customer-id-value">${item.id}</td>
+                        <td class="customer-name-value">${item.name}</td>
+                        <td class="customer-address-value">${item.address}</td>
+                        <td class="customer-salary-value">${item.salary}</td>
+                    </tr>`;
+        $('#customer-tbl-body').append(record);
+    });
+    loadTable();
+});
+
+
+
+
 
 
 
