@@ -14,6 +14,34 @@ function nextId() {
     }
 }
 
+
+function validateCustomerName(name) {
+    if (!name || name.trim() === "") {
+        alert("Customer name cannot be empty.");
+        return false;
+    }
+    return true;
+}
+
+function validateCustomerAddress(address) {
+    if (!address || address.trim() === "") {
+        alert("Customer address cannot be empty.");
+        return false;
+    }
+    return true;
+}
+
+function validateCustomerPhoneNumber(phoneNumber) {
+    // A simple regex to validate phone numbers (adjust as needed for your use case)
+    const phoneRegex = /^(?:\+94|94|0)?7\d{8}$/; // This regex assumes a 10-digit phone number without any separators
+    if (!phoneNumber || !phoneRegex.test(phoneNumber)) {
+        alert("Invalid phone number. Please enter a valid 10-digit phone number.");
+        return false;
+    }
+    return true;
+}
+
+
 /*customer save*/
 $('#save-customer').on('click', () => {
 
@@ -23,6 +51,17 @@ $('#save-customer').on('click', () => {
     var customerName = $('#customer_name').val();
     var customerAddress = $('#customer_address').val();
     var customerSalary = $('#customer_salary').val();
+
+    if (!validateCustomerName(customerName)) {
+        return; // Stop the function if validation fails
+    }
+    if (!validateCustomerAddress(customerAddress)) {
+        return; // Stop the function if validation fails
+    }
+
+    if (!validateCustomerPhoneNumber(customerSalary)) {
+        return; // Stop the function if phone number validation fails
+    }
 
     $('#close-customer-model').click();
 
