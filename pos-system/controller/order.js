@@ -196,6 +196,12 @@ function clearCustomerSection(){
     $('#customer-salary-orderForm').val('');
 }
 
+function clearPaymentSection(){
+    $('#cash').val('');
+    $('#balance').val('');
+    $('#discount').val('');
+}
+
 
 
 
@@ -226,143 +232,42 @@ $('#order-table-body').on('click', '.cart_remove', function() {
     setTotalValues();
 });
 
-/*$('#btn-order').on('click', () => {
-    let orderId = $('#order-id').val();
-    let orderDate = $('#order-date').val();
-    let customerId = $('#customer-id-order').val();
-    let subTotal = parseFloat($('#subtotal').val());
-    let cashAmount = parseFloat($('#cash').val());
-    let discountValue = parseFloat($('#discount').val()) || 0;
+$('#btn-order').on('click', () => {
+    const confirmation = confirm("Do you want to proceed with the payment?");
+    if (confirmation) {
+        // Save the order details to the orders array
+        const orderId = $('#order-id').val();
+        const orderDate = $('#order-date').val();
+        const customerId = $('#customer-id-order').val();
 
-    if (cashAmount >= subTotal) {
-        if (cart.length !== 0) {
-            let order = new OrderModel(orderId, orderDate, discountValue, subTotal, customerId);
-            orders.push(order);
-
-            cart.forEach((cart_item) => {
-                let orderDetail = new OrderDetailModel(orderId, cart_item.itemId, cart_item.qty, cart_item.unitPrice, cart_item.total);
-                orderDetails.push(orderDetail);
-            });
-
-            cart = [];
-            loadCart();
-            clearItemSection();
-            $('#customer-id-order').val('');
-            $('#customer-name-orderForm').val('');
-            $('#customer_address-orderForm').val('');
-            $('#customer-salary-orderForm').val('');
-            $('#discount').val('');
-            $('#cash').val('');
-            $('#balance').val('');
-            $('#total').val('0/=');
-            $('#subtotal').val('0/=');
-
-            alert("Order is placed successfully");
-            generateOrderId();
-        } else {
-            alert("Please add items to cart");
+        if (!orderId || !orderDate || !customerId || cart.length === 0) {
+            alert("Please fill in all the details and add at least one item to the cart.");
+            return;
         }
-    } else {
-        alert("Payment is not enough");
-    }
-});*/
 
+        const newOrder = new OrderModel(orderId, orderDate, customerId, cart);
+        orders.push(newOrder);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*function setBalance(){
-    let subTotal = parseFloat($('#subtotal').val());
-    let cashAmount = parseFloat($('#cash').val());
-    $('#balance').val(cashAmount - subTotal);
-}
-
-$('#cash').on('input', () => setBalance());
-
-//set sub total value
-$('#discount').on('input', () => {
-    let discountValue = parseFloat(discount.val()) || 0;
-    if (discountValue < 0 || discountValue > 100) {
-        discountValue = Math.min(100, Math.max(0, discountValue));
-        discount.val(discountValue);
-    }
-
-    let total_value = calculateTotal();
-    let discountAmount = (total_value * discountValue) / 100;
-    sub_total.text(`${total_value - discountAmount}/=`);
-    setBalance();
-});
-
-$('#order-table-body').on('click', '.cart_remove', function() {
-    const item_Id = $(this).data('id');
-    console.log(item_Id)
-    const index = item_Id - 1;
-
-    if (index !== -1) {
-        cart.splice(index, 1);
+        // Clear the cart and the order form
+        cart = [];
         loadCart();
         setTotalValues();
+        clearCustomerSection();
+        generateOrderId();
+        clearPaymentSection();
+
+        alert("Payment successful. Order has been placed.");
+
+
     }
-
-});*/
-
-/*order_btn.on('click', () => {
-    let orderId = order_id.val();
-    let order_date = date.val();
-    let customerId = customer_id.val();
-    let subTotal = parseFloat(sub_total.text());
-    let cashAmount = parseFloat(cash.val());
-    let discountValue = parseInt(discount.val()) || 0;
-
-    if (cashAmount >= subTotal) {
-        if (cart.length !== 0) {
-
-            let order = new OrderModel(orderId, order_date, discountValue, subTotal, customerId);
-            orders.push(order);
-            loadOrderTable();
-
-            cart.forEach((cart_item) => {
-                let order_detail = new OrderDetailModel(orderId, cart_item.itemId, cart_item.qty, cart_item.unitPrice, cart_item.total);
-                orderDetails.push(order_detail);
-            });
-            cart.splice(0, cart.length);
-            loadCart();
-            clearItemSection();
-            customer_id.val('select the customer');
-            customer_name.val('');
-            discount.val('');
-            cash.val('');
-            balance.val('');
-            net_total.text('0/=');
-            sub_total.text('0/=');
+});
 
 
-            alert("Order is placed successfully");
-            initialize();
 
-            console.log(orderDetails);
+// Display the order ID in the table
+/*   $('#order-table-body').append(
+       `<tr>
+           <th colspan="5">Order ID: ${orderId}</th>
+       </tr>`
+   );*/
 
-        } else {
-            alert("please add items to cart");
-        }
-    } else {
-        alert("Payment is not enough");
-    }
-
-});*/
