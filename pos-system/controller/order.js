@@ -132,6 +132,8 @@ $('#btn-item').on('click', () => {
             loadCart();
             setTotalValues()
             clearItemSection();
+          /*  clearCustomerSection();*/
+
         } else {
             cart[cartItemIndex].qty += orderQTY;
             cart[cartItemIndex].total = cart[cartItemIndex].qty * cart[cartItemIndex].unitPrice;
@@ -188,6 +190,11 @@ function clearItemSection() {
     $('#order-qty').val('');
 }
 
+function clearCustomerSection(){
+    $('#customer-name-orderForm').val('');
+    $('#customer_address-orderForm').val('');
+    $('#customer-salary-orderForm').val('');
+}
 
 
 
@@ -219,7 +226,7 @@ $('#order-table-body').on('click', '.cart_remove', function() {
     setTotalValues();
 });
 
-$('#btn-order').on('click', () => {
+/*$('#btn-order').on('click', () => {
     let orderId = $('#order-id').val();
     let orderDate = $('#order-date').val();
     let customerId = $('#customer-id-order').val();
@@ -258,7 +265,7 @@ $('#btn-order').on('click', () => {
     } else {
         alert("Payment is not enough");
     }
-});
+});*/
 
 
 
