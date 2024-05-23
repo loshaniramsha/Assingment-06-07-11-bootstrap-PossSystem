@@ -282,15 +282,26 @@
     <div class="card" style="width: 96rem; height: 90vh">
         <div class="card-body">
             <h1 id="order-text">Order Details</h1>
-            <br>
+
+
             <div class="container text-center">
                 <div class="row">
                     <div class="col">
                         <!--Invoice details-->
+
                         <div class="card" style="width: 25rem;height: 25rem">
                             <form>
                                 <fieldset>
                                     <legend id="invoice"><b>Invoice Details</b></legend>
+                                    <div class="input-group">
+                                        <select class="form-select" id="order-search" aria-label="Example select with button addon">
+                                            <option selected>Search Item...</option>
+                                            <option value="1"></option>
+                                            <option value="2"></option>
+                                            <option value="3"></option>
+                                        </select>
+                                        <button class="btn btn-success" type="button">Search</button>
+                                    </div>
                                     <div class="row">
                                         <div class="col">
                                             <label for="order-id" class="form-label"><b>OrderId</b></label>
@@ -330,6 +341,62 @@
                                         <label for="customer_address-orderForm" class="form-label"><b>Address</b></label>
                                         <input type="text" class="form-control" id="customer_address-orderForm" placeholder="Address">
                                     </div>
+
+
+
+                                    <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->
+                               <!--     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#search-order">
+                                        Search
+                                    </button>
+
+                                    &lt;!&ndash; Modal &ndash;&gt;
+                                    <div class="modal fade" id="search-order" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="search-label" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="search-label">Search</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <form>
+                                                        <div class="mb-3">
+                                                            <label for="orderId" class="form-label">OrderId</label>
+                                                            <input type="text" class="form-control" id="orderId">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="model-itemCode" class="form-label">ItemCode</label>
+                                                            <input type="text" class="form-control" id="model-itemCode" readonly>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="model-UnitPrice" class="form-label">UnitPrice</label>
+                                                            <input type="text" class="form-control" id="model-UnitPrice" readonly>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="model-qty" class="form-label">Qty</label>
+                                                            <input type="text" class="form-control" id="model-qty" readonly>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="model-total" class="form-label">Total</label>
+                                                            <input type="text" class="form-control" id="model-total" readonly>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                        <button class="btn btn-warning" type="button" id="model-search">Search</button>
+                                                        <button class="btn btn-primary" type="button" id="model-clear">Clear</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+
+
+                                    <!--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$-->
+
+
+
                                     <br>
                                 </fieldset>
                             </form>
