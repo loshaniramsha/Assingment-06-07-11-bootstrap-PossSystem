@@ -264,6 +264,101 @@ $('#btn-order').on('click', () => {
 
 
 
+
+$('#search-order-btn').on('click', () => {
+    const selectedOrderId = $('#order-search').val();
+    const selectedOrder = orders.find(order => order.orderId === selectedOrderId);
+
+    if (selectedOrder) {
+        $('#order-table-body').empty();
+        selectedOrder.cart.forEach((item) => {
+            $('#order-table-body').append(
+                `<tr>
+                    <th scope="row">${item.itemId}</th>
+                    <td>${item.unitPrice}</td>
+                    <td>${item.qty}</td>
+                    <td>${item.total}</td>
+                </tr>`
+            );
+        });
+        $('#order-date').val(selectedOrder.orderDate);
+    } else {
+        alert("Order not found");
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*$('#btn-search-order').on('click', () => {
+    const orderId = $('#order-id').val();
+    const order = orders.find(o => o.orderId === orderId);
+
+    if (!order) {
+        alert("Order not found");
+        return;
+    }
+
+    $('#order-date').val(order.orderDate);
+    $('#customer-id-order').val(order.customerId);
+
+    const customerDetails = customer.find(c => c.id === order.customerId);
+    if (customerDetails) {
+        $('#customer-name-orderForm').val(customerDetails.name);
+        $('#customer_address-orderForm').val(customerDetails.address);
+        $('#customer-salary-orderForm').val(customerDetails.salary);
+    }
+
+    cart = order.cart;
+    loadCart();
+    setTotalValues();
+});
+
+
+// Other existing JavaScript code...
+
+$('#model-search').on('click', () => {
+    const orderId = $('#orderId-search').val();
+    const order = orders.find(o => o.orderId === orderId);
+
+    if (!order) {
+        alert("Order not found");
+        return;
+    }
+
+    const firstCartItem = order.cart.length > 0 ? order.cart[0] : null;
+    if (firstCartItem) {
+        $('#model-itemCode').val(firstCartItem.itemId);
+        $('#model-UnitPrice').val(firstCartItem.unitPrice);
+        $('#model-qty').val(firstCartItem.qty);
+        $('#model-total').val(firstCartItem.total);
+    } else {
+        alert("No items found in the order");
+    }
+});
+
+$('#model-clear').on('click', () => {
+  $('#search-order').modal('hide');
+});*/
+
+// Other existing JavaScript code...
+
+
+
+
 // Display the order ID in the table
 /*   $('#order-table-body').append(
        `<tr>
