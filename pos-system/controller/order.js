@@ -4,10 +4,16 @@ import {items} from "../db/db.js";
 import {OrderModel} from "../model/OrderModel.js";
 import {orders} from "../db/db.js";
 
-function generateOrderId() {
+/*function generateOrderId() {
     const orderIdInput = $('#order-id');
     const orderIdPrefix = "ORD-";
     const orderIdNumber = String(customer.length + 1).padStart(4, '0');
+    orderIdInput.val(orderIdPrefix + orderIdNumber);
+}*/
+function generateOrderId() {
+    const orderIdInput = $('#order-id');
+    const orderIdPrefix = "ORD-";
+    const orderIdNumber = String(orders.length + 1).padStart(4, '0');
     orderIdInput.val(orderIdPrefix + orderIdNumber);
 }
 
@@ -245,6 +251,13 @@ $('#btn-order').on('click', () => {
             return;
         }
 
+        cart.forEach(cartItem => {
+            const item = items.find(i => i.itemCode === cartItem.itemId);
+            if (item) {
+                item.qty -= cartItem.qty;
+            }
+        });
+
         const newOrder = new OrderModel(orderId, orderDate, customerId, cart);
         orders.push(newOrder);
 
@@ -265,7 +278,7 @@ $('#btn-order').on('click', () => {
 
 
 
-$('#search-order-btn').on('click', () => {
+/*$('#search-order-btn').on('click', () => {
     const selectedOrderId = $('#order-search').val();
     const selectedOrder = orders.find(order => order.orderId === selectedOrderId);
 
@@ -285,7 +298,7 @@ $('#search-order-btn').on('click', () => {
     } else {
         alert("Order not found");
     }
-});
+});*/
 
 
 
