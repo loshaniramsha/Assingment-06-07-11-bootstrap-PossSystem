@@ -1,0 +1,1 @@
+import {customer,orders,items,orderDetails} from "../db/db";
