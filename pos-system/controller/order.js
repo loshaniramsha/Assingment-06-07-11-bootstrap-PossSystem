@@ -1,4 +1,3 @@
-
 import { customer, items, orders, orderDetails } from "../db/db.js";
 import { OrderModel } from "../model/OrderModel.js";
 import { OrderDetailsModel } from "../model/OrderDetailsModel.js";
@@ -225,26 +224,33 @@ export function loadCombosOrderDetails(array, comboBoxId) {
 }
 
 $('#inputGroupSelect-orderDetails').on('change', () => {
-    var selectedOrderId = $('#inputGroupSelect-orderDetails').val();
-    var selectedOrderDetails = orderDetails.filter(od => od.orderId == selectedOrderId);
+    const selectedOrderId = $('#inputGroupSelect-orderDetails').val();
 
-    if (selectedOrderDetails.length > 0) {
-        $('#orderDetails-table-body').empty();
-        selectedOrderDetails.forEach((orderDetail) => {
-            $('#orderDetails-table-body').append(
-                `<tr>
-                    <td>${orderDetail.orderId}</td>
-                    <td>${orderDetail.itemId}</td>
-                    <td>${orderDetail.unitPrice}</td>
-                    <td>${orderDetail.qty}</td>
-                    <td>${orderDetail.total}</td>
-                </tr>`
-            );
-        });
+    if (selectedOrderId !== '') {
+        const selectedOrderDetails = orderDetails.filter(od => od.orderId === selectedOrderId);
+        if (selectedOrderDetails.length > 0) {
+            console.log("Selected Order Details:");
+            $('#orderDetails-table-body').empty();
+            selectedOrderDetails.forEach(orderDetail => {
+                $('#orderDetails-table-body').append(`
+                    <tr>
+                        <td>${orderDetail.orderId}</td>
+                        <td>${orderDetail.itemId}</td>
+                        <td>${orderDetail.unitPrice}</td>
+                        <td>${orderDetail.qty}</td>
+                        <td>${orderDetail.total}</td>
+                    </tr>
+                `);
+            });
+        } else {
+            $('#orderDetails-table-body').empty();
+        }
     } else {
         $('#orderDetails-table-body').empty();
     }
 });
+
+
 
 
 
