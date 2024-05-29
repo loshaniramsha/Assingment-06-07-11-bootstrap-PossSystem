@@ -1,41 +1,50 @@
 export class OrderDetailsModel{
-    constructor(orderId,customerId,itemId,date,total) {
+    constructor(orderId,itemId,unitPrice,qty,total) {
         this._orderId = orderId;
-        this._customerId = customerId;
         this._itemId = itemId;
-        this._date = date;
+        this._unitPrice = unitPrice;
+        this._qty = qty;
         this._total = total;
     }
+
 
     get orderId() {
         return this._orderId;
     }
-    get customerId() {
-        return this._customerId;
+
+    set orderId(value) {
+        this._orderId = value;
     }
+
     get itemId() {
         return this._itemId;
     }
-    get date() {
-        return this._date;
+
+    set itemId(value) {
+        this._itemId = value;
     }
+
+    get unitPrice() {
+        return this._unitPrice;
+    }
+
+    set unitPrice(value) {
+        this._unitPrice = value;
+    }
+
+    get qty() {
+        return this._qty;
+    }
+
+    set qty(value) {
+        this._qty = value;
+    }
+
     get total() {
         return this._total;
     }
 
-    set orderId(orderId) {
-        this._orderId = orderId;
-    }
-    set customerId(customerId) {
-        this._customerId = customerId;
-    }
-    set itemId(itemId) {
-        this._itemId = itemId;
-    }
-    set date(date) {
-        this._date = date;
-    }
-    set total(total) {
-        this._total = total;
+    set total(value) {
+        this._total = value;
     }
 }

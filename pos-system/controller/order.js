@@ -1,6 +1,7 @@
 import { customer, items, orders, orderDetails } from "../db/db.js";
 import { OrderModel } from "../model/OrderModel.js";
 import { OrderDetailsModel } from "../model/OrderDetailsModel.js";
+import { loadCMBDetails } from "./orderDetails.js";
 
 function generateOrderId() {
     const orderIdInput = $('#order-id');
@@ -14,7 +15,6 @@ $(document).ready(function () {
     loadCombos(customer, 'inputGroupSelect-customer');
     loadCombos(customer, 'customer-id-order');
     loadComboItem(items, 'inputState-item');
-    loadCombosOrderDetails(orderDetails, 'inputGroupSelect-orderDetails');
 });
 
 export function loadCombos(array, comboBoxId) {
@@ -179,6 +179,7 @@ $('#btn-order').on('click', () => {
         const orderId = $('#order-id').val();
         const orderDate = $('#order-date').val();
         const customerId = $('#customer-id-order').val();
+        const total = $('#subtotal').val();
 
         if (!orderId || !orderDate || !customerId || cart.length === 0) {
             alert("Please fill in all the details and add at least one item to the cart.");
@@ -192,7 +193,7 @@ $('#btn-order').on('click', () => {
             }
         });
 
-        const newOrder = new OrderModel(orderId, orderDate, customerId, cart);
+        const newOrder = new OrderModel(orderId, orderDate, total , customerId);
         orders.push(newOrder);
 
         cart.forEach(cartItem => {
@@ -200,7 +201,9 @@ $('#btn-order').on('click', () => {
             orderDetails.push(orderDetailsItem);
         });
 
-        loadCombosOrderDetails(orderDetails, 'inputGroupSelect-orderDetails');
+        console.log("order details", cart);
+
+        loadCMBDetails(orders, 'inputGroupSelect-orderDetails');
 
         cart = [];
         loadCart();
@@ -210,47 +213,6 @@ $('#btn-order').on('click', () => {
         clearPaymentSection();
 
         alert("Payment successful. Order has been placed.");
-    }
-});
-
-export function loadCombosOrderDetails(array, comboBoxId) {
-    console.log("combo-box loaded", array, comboBoxId);
-    var comboBox = $('#' + comboBoxId);
-    comboBox.empty();
-    comboBox.append($('<option>', { value: '', text: 'Select Order ID...' }));
-    array.forEach(function (order) {
-        comboBox.append($('<option>', { value: order.orderId, text: order.orderId }));
-    });
-}
-
-$(document).ready(function() {
-    loadCombosOrderDetails(orderDetails, 'inputGroupSelect-orderDetails');
-});
-
-$('#inputGroupSelect-orderDetails').on('change', () => {
-    const selectedOrderId = $('#inputGroupSelect-orderDetails').val();
-
-    if (selectedOrderId !== '') {
-        const selectedOrderDetails = orderDetails.filter(od => od.orderId === selectedOrderId);
-        if (selectedOrderDetails.length > 0) {
-            console.log("Selected Order Details:", selectedOrderDetails);
-            $('#orderDetails-table-body').empty();
-            selectedOrderDetails.forEach(orderDetail => {
-                $('#orderDetails-table-body').append(`
-                    <tr>
-                        <td>${orderDetail.orderId}</td>
-                        <td>${orderDetail.itemId}</td>
-                        <td>${orderDetail.unitPrice}</td>
-                        <td>${orderDetail.qty}</td>
-                        <td>${orderDetail.total}</td>
-                    </tr>
-                `);
-            });
-        } else {
-            $('#orderDetails-table-body').empty();
-        }
-    } else {
-        $('#orderDetails-table-body').empty();
     }
 });
 

@@ -1,7 +1,7 @@
-import { orderDetails } from "../db/db.js";
+import {orderDetails, orders} from "../db/db.js";
 
 // Function to load order IDs into the select dropdown
-export function loadCombosOrderDetails(array, comboBoxId) {
+export function loadCMBDetails(array, comboBoxId) {
     console.log("combo-box loaded", array, comboBoxId);
     const comboBox = $('#' + comboBoxId);
     comboBox.empty();
@@ -11,10 +11,6 @@ export function loadCombosOrderDetails(array, comboBoxId) {
     });
 }
 
-// Populate the dropdown on page load
-$(document).ready(function() {
-    loadCombosOrderDetails(orderDetails, 'inputGroupSelect-orderDetails');
-});
 
 $('#inputGroupSelect-orderDetails').on('change', () => {
     const selectedOrderId = $('#inputGroupSelect-orderDetails').val();
@@ -23,9 +19,9 @@ $('#inputGroupSelect-orderDetails').on('change', () => {
         const selectedOrderDetails = orderDetails.filter(od => od.orderId === selectedOrderId);
         if (selectedOrderDetails.length > 0) {
             console.log("Selected Order Details:", selectedOrderDetails);
-            $('#orderDetails-table-body').empty();
+            $('#ordrDtails-tbl-body').empty();
             selectedOrderDetails.forEach(orderDetail => {
-                $('#orderDetails-table-body').append(`
+                $('#ordrDtails-tbl-body').append(`
                     <tr>
                         <td>${orderDetail.orderId}</td>
                         <td>${orderDetail.itemId}</td>
@@ -36,9 +32,12 @@ $('#inputGroupSelect-orderDetails').on('change', () => {
                 `);
             });
         } else {
-            $('#orderDetails-table-body').empty();
+            $('#ordrDtails-tbl-body').empty();
         }
     } else {
-        $('#orderDetails-table-body').empty();
+        $('#ordrDtails-tbl-body').empty();
     }
 });
+
+
+
