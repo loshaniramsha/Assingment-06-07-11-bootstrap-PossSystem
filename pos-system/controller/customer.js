@@ -14,18 +14,27 @@ function nextId() {
     }
 }
 
-
-function validateCustomerName(name) {
-    if (!name || name.trim() === "") {
-        alert("Customer name cannot be empty.");
+function validateCustomerAddress(address) {
+    const lettersOnlyRegex = /^[A-Za-z\s]+$/;
+    if (!address || address.trim() === "") {
+        alert("Customer address cannot be empty.");
+        return false;
+    }
+    if (!lettersOnlyRegex.test(address)) {
+        alert("Customer address can only contain letters and spaces.");
         return false;
     }
     return true;
 }
 
-function validateCustomerAddress(address) {
-    if (!address || address.trim() === "") {
-        alert("Customer address cannot be empty.");
+function validateCustomerName(name) {
+    const lettersOnlyRegex = /^[A-Za-z\s]+$/;
+    if (!name || name.trim() === "") {
+        alert("Customer name cannot be empty.");
+        return false;
+    }
+    if (!lettersOnlyRegex.test(name)) {
+        alert("Customer name can only contain letters and spaces.");
         return false;
     }
     return true;
