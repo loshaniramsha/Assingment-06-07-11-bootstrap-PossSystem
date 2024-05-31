@@ -16,6 +16,34 @@ function nextId() {
     }
 }
 
+function validateItemName(name) {
+    const lettersOnlyRegex = /^[A-Za-z\s]+$/;
+    if (!name || name.trim() === "") {
+        alert("Item name cannot be empty.");
+        return false;
+    }
+    if (!lettersOnlyRegex.test(name)) {
+        alert("Item name can only contain letters and spaces.");
+        return false;
+    }
+    return true;
+}
+
+function validateItemPrice(price) {
+    if (!price || isNaN(price) || price <= 0) {
+        alert("Item price must be a positive number.");
+        return false;
+    }
+    return true;
+}
+
+function validateItemQty(qty) {
+    if (!qty || isNaN(qty) || qty <= 0) {
+        alert("Item quantity must be a positive number.");
+        return false;
+    }
+    return true;
+}
 $("#item-save").on('click', () => {
     alert("Save item");
 
@@ -23,6 +51,16 @@ $("#item-save").on('click', () => {
     const itemName = $("#item_name").val();
     const itemPrice = $("#item_price").val();
     const itemQty = $("#item_qty").val();
+
+    if (!validateItemName(itemName)) {
+        return; // Stop the function if validation fails
+    }
+    if (!validateItemPrice(itemPrice)) {
+        return; // Stop the function if validation fails
+    }
+    if (!validateItemQty(itemQty)) {
+        return; // Stop the function if validation fails
+    }
 
     $('#close-item-model').click();
 
