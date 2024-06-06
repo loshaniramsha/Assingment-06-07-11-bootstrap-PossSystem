@@ -92,3 +92,24 @@ label{
         opacity: 1;
     }
 }
+
+
+
+#btn-item{
+    color: #f1ecec;
+}
+#btn-order{
+    color: white;
+    margin-bottom: 40px;
+    margin-left: 80px;
+    width: 100px;
+}
+#item-price-orderForm{
+    width: 150px;
+}
+#qtyHand{
+    padding-right: 10px;
+}
+.highlight {
+    background-color: #b21515; /* Change to your desired highlight color */
+}
