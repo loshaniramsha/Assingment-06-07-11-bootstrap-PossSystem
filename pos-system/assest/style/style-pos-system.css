@@ -113,3 +113,50 @@ label{
 .highlight {
     background-color: #b21515; /* Change to your desired highlight color */
 }
+
+
+#clz{
+    height: 600px;
+}
+#all-customer{
+    width: 200px;
+}
+#add{
+    width: 200px;
+    margin-top: 100px;
+    margin-right: 0;
+}
+#btn-cus{
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+
+#clz-item{
+    height: 600px;
+}
+#all-item{
+    width: 200px;
+}
+#add-itm{
+    width: 200px;
+    margin-top: 100px;
+    margin-right: 0;
+}
+#btn-itm{
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+
+#btn-order{
+    margin-left: 0;
+}
+
+#tbl-order{
+    margin-bottom: 100px;
+}
+
+#clz-order-details{
+    height: 600px;
+}
